@@ -2,7 +2,7 @@ readme_path <- "README.md"
 active_dir <- "Active"
 completed_dir <- "Completed"
 
-# URL encode folder names (spaces → %20, etc.)
+# Encode folder names to be safe in Markdown links
 url_encode <- function(x) {
   utils::URLencode(x, reserved = TRUE)
 }
@@ -28,23 +28,6 @@ get_project_links <- function(directory) {
 }
 
 update_readme <- function() {
-  if (!file.exists(readme_path)) {
-    stop("Main README.md not found.")
-  }
-  
-  content <- readLines(readme_path)
-  
-  # Find section markers
-  active_idx <- grep("^## Active", content)
-  completed_idx <- grep("^## Completed", content)
-  
-  if (length(active_idx) == 0 || length(completed_idx) == 0) {
-    stop("README does not contain both '## Active' and '## Completed' headers.")
-  }
-  
-  before_active <- content[1:(active_idx - 1)]
-  after_completed <- content[(completed_idx + 1):length(content)]
-  
   active_links <- get_project_links(active_dir)
   completed_links <- get_project_links(completed_dir)
   
@@ -52,14 +35,26 @@ update_readme <- function() {
   completed_block <- if (length(completed_links)) completed_links else "_No completed projects listed._"
   
   new_content <- c(
-    before_active,
-    "## Active",
+    "# Projects",
+    "This repository contains various MMTD Genetics projects organized into subfolders",
+    "",
+    "# Project List",
+    "",
+    "<details>",
+    "<summary><strong>Active Projects</strong></summary>",
+    "",
     active_block,
     "",
-    "## Completed",
+    "</details>",
+    "",
+    "<details>",
+    "<summary><strong>Completed Projects</strong></summary>",
+    "",
     completed_block,
     "",
-    after_completed
+    "</details>",
+    "",
+    "# Create A New Project"
   )
   
   writeLines(new_content, readme_path)

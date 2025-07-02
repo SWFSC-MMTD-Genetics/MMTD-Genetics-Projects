@@ -1,18 +1,21 @@
 # Projects
-
-This repository contains various projects and resources, organized into 'completed' and 'current' categories.
+This repository contains various MMTD Genetics projects organized into subfolders
 
 # Project List
-## Active
+
+<details>
+<summary><strong>Active Projects</strong></summary>
+
 - [Harbor Seal Mybaits mitogenome](Active/Harbor%20Seal%20Mybaits%20mitogenome)
-- [Test Project](Active/Test%20Project)
 
-## Completed
-- [Test](Completed/Test)
+</details>
 
-- [Test](Completed/Test)
+<details>
+<summary><strong>Completed Projects</strong></summary>
 
-- [Test](Completed/Test)
+_No completed projects listed._
 
+</details>
 
-## Completed
+# Create A New Project
+Copy this folder...
