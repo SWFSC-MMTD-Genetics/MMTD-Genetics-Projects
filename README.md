@@ -4,12 +4,7 @@ This repository contains various projects and resources, organized into 'complet
 
 # Project List
 ## Active
-- [Harbor Seal Mybaits mitogenome](Active/Harbor Seal Mybaits mitogenome)
 
 ## Completed
-- [Test](Completed/Test)
 
-- [Test](Completed/Test)
-
-NA
 ## Completed
