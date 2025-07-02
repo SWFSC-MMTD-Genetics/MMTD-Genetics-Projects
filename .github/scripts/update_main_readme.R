@@ -2,6 +2,11 @@ readme_path <- "README.md"
 active_dir <- "Active"
 completed_dir <- "Completed"
 
+# URL encode folder names (spaces → %20, etc.)
+url_encode <- function(x) {
+  utils::URLencode(x, reserved = TRUE)
+}
+
 get_project_links <- function(directory) {
   if (!dir.exists(directory)) return(character(0))
   
@@ -14,7 +19,8 @@ get_project_links <- function(directory) {
     readme_file <- file.path(folder_path, "README.md")
     
     if (file.exists(readme_file)) {
-      link <- sprintf("- [%s](%s/%s)", folder, directory, folder)
+      encoded_folder <- url_encode(folder)
+      link <- sprintf("- [%s](%s/%s)", folder, directory, encoded_folder)
       links <- c(links, link)
     }
   }
